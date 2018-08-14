@@ -5,5 +5,5 @@ import App from "./App";
 
 hydrate(
   React.createElement(App),
-  document.getElementById("root")
+  document.getElementById("app")
 );

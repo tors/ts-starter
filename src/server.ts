@@ -7,13 +7,16 @@ import App from './App';
 const server = express();
 const port = 3000;
 
+server.use(express.static('./dist'));
+
 server.get('/', (req, res) => {
   const app = renderToString(React.createElement(App));
   res.send(`
-    <!DOCTYPE html>
+    <!doctype html>
     <html>
       <head>
         <title>TS Starter</title>
+        <script src="/client.js"></script>
       </head>
       <body style="margin:0">
         <div id="app">${app}</div>
