@@ -16,10 +16,10 @@ server.get('/', (req, res) => {
     <html>
       <head>
         <title>TS Starter</title>
-        <script src="/client.js"></script>
       </head>
       <body style="margin:0">
         <div id="app">${app}</div>
+        <script src="/client.js"></script>
       </body>
     </html>
   `);
