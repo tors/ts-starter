@@ -1,16 +1,33 @@
 import * as express from 'express';
 import * as React from 'react';
-import { renderToString } from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router';
 
 import App from './App';
+
+interface Context {
+  url: string;
+  status: number;
+}
 
 const server = express();
 const port = 3000;
 
 server.use(express.static('./dist'));
 
-server.get('/', (req, res) => {
-  const app = renderToString(React.createElement(App));
+server.get('*', (req, res) => {
+  const context = {} as Context;
+
+  const app = renderToString(
+    <StaticRouter location={req.url} context={context}>
+      <App />
+    </StaticRouter>,
+  );
+
+  if (context.url) {
+    res.redirect(context.status, context.url);
+  }
+
   res.send(`
     <!doctype html>
     <html>

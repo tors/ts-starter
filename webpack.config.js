@@ -3,7 +3,7 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = [{
   entry: {
-    client: "./src/client.ts"
+    client: "./src/client.tsx"
   },
   devtool: "inline-source-map",
   module: {
@@ -24,7 +24,7 @@ module.exports = [{
   }
 }, {
   entry: {
-    server: "./src/server.ts"
+    server: "./src/server.tsx"
   },
   devtool: "inline-source-map",
   module: {
