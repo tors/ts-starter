@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Route, Switch, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class App extends React.Component {
   render() {
@@ -7,6 +8,7 @@ class App extends React.Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/redirect" render={() => <Redirect to="/" />} />
       </Switch>
     );
   }
@@ -16,6 +18,7 @@ const About = () => (
   <div>
     About
     <Link to="/">-Home</Link>
+    <Link to="/redirect">-Redirect</Link>
   </div>
 );
 
